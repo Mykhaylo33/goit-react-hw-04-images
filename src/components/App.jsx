@@ -39,12 +39,14 @@ export default function App() {
           );
         }
 
-        const normalizedHits = data.hits.map(({ id, largeImageURL, webformatURL, tags }) => ({
-          id,
-          largeImageURL,
-          webformatURL,
-          tags,
-        }));
+        const normalizedHits = data.hits.map(
+          ({ id, largeImageURL, webformatURL, tags }) => ({
+            id,
+            largeImageURL,
+            webformatURL,
+            tags,
+          })
+        );
 
         setShowBtn(showButton);
         setImages(prevImages => [...prevImages, ...normalizedHits]);
@@ -90,7 +92,9 @@ export default function App() {
       {status === 'pending' && <Loader />}
       {showBtn && <Button onClick={onLoadMore} />}
       {status === 'rejected' && (
-        <h1 style={{ textAlign: 'center', marginTop: '50px' }}>{error.message}</h1>
+        <h1 style={{ textAlign: 'center', marginTop: '50px' }}>
+          {error.message}
+        </h1>
       )}
     </>
   );
